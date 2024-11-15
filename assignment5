@@ -1,0 +1,301 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "e6dbef66-1e41-468f-ab93-e276d64b7492",
+   "metadata": {},
+   "source": [
+    "Q1. What is an Exception in python? Write the difference between Exceptions and Syntax errors."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9fbc3555-8391-4683-a61e-2a2eea259a11",
+   "metadata": {},
+   "source": [
+    "an exception is an error that occurs when running the code for example dividing the value with \"o\"  like that.where as syntax errors are somthing where the error happens before execution like you forgot to add comma,semicolon somethign like that"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2fccaaa0-03fb-43e6-b867-27ee72107959",
+   "metadata": {},
+   "source": [
+    " Q2. What happens when an exception is not handled? Explain with an example.\n",
+    "\n",
+    " When an exception is not handled it will effect the flow of the code where it just stops there will not move forward for example"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "6e0f0211-b553-4a9d-8b30-dc6162ed2cc7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def division(x,y):\n",
+    "    return x/y"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "5d570004-f815-46a6-9a13-51f321bc29f2",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "ZeroDivisionError",
+     "evalue": "division by zero",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mZeroDivisionError\u001b[0m                         Traceback (most recent call last)",
+      "Cell \u001b[1;32mIn[8], line 1\u001b[0m\n\u001b[1;32m----> 1\u001b[0m division(\u001b[38;5;241m2\u001b[39m,\u001b[38;5;241m0\u001b[39m)\n",
+      "Cell \u001b[1;32mIn[6], line 2\u001b[0m, in \u001b[0;36mdivision\u001b[1;34m(x, y)\u001b[0m\n\u001b[0;32m      1\u001b[0m \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21mdivision\u001b[39m(x,y):\n\u001b[1;32m----> 2\u001b[0m     \u001b[38;5;28;01mreturn\u001b[39;00m x\u001b[38;5;241m/\u001b[39my\n",
+      "\u001b[1;31mZeroDivisionError\u001b[0m: division by zero"
+     ]
+    }
+   ],
+   "source": [
+    "division(2,0)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "de876ae9-2bfc-47d7-93ef-6d78485fd0fb",
+   "metadata": {},
+   "source": [
+    "Q3.Which Python statements are used to catch and handle exceptions? Explain with an example.\n",
+    "\n",
+    "In python the try,except,else,finally  statements are used to catch and handle the exceptions.These are used to work the flow without any halts."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "8791217a-b0a4-4146-b469-c88dfb3843bf",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "the equation is not processable : division by zero\n",
+      "even though we will run the code\n"
+     ]
+    }
+   ],
+   "source": [
+    "try:\n",
+    "    x = 3\n",
+    "    y = 0\n",
+    "    print(x/y)\n",
+    "except Exception as e:\n",
+    "    print(\"the equation is not processable :\",e)\n",
+    "else:\n",
+    "    print(\"the code is fine\")\n",
+    "finally:\n",
+    "    print(\"even though we will run the code\")\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0a4d7c0f-b4a3-4edd-9001-277f025d15a7",
+   "metadata": {},
+   "source": [
+    "Q4. Explain with an example:#\n",
+    " try and else#\n",
+    " finall\n",
+    "+ raise"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6649d898-cb4d-4619-9f27-629c84cdba79",
+   "metadata": {},
+   "source": [
+    "#In python try mainly used to make the code that may eventually happnes to be eroor\n",
+    "#exception is used where anticipating the error to happen it will handle by giving the error without disturbing the flow of the code\n",
+    "#else mainly used when there is no error happens in exception block it will be executed\n",
+    "#finally is type of statement where it will display the message irrespective of the code in above statements and it is like last minute handler where it is used to close the function if not closed in the first place"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "f22fffdf-f1e4-47e5-8fdf-17b08f8d8803",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "the error is because of file not found : [Errno 2] No such file or directory: 'notebook.txt'\n"
+     ]
+    }
+   ],
+   "source": [
+    "try:\n",
+    "    with open (\"notebook.txt\",\"r\") as file:\n",
+    "        new = file.read()\n",
+    "        print(new)\n",
+    "except Exception as e:\n",
+    "    print(\"the error is because of file not found :\",e)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "03ff3b3a-e6df-4fe0-8e96-e5695e6ead80",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "the code is good no issue is there\n"
+     ]
+    }
+   ],
+   "source": [
+    "try:\n",
+    "    with open (\"notebook.txt\",\"w\") as file:\n",
+    "        file.write(\"this is the actual code\")\n",
+    "except Exception as e:\n",
+    "    print(\"the error is because of file not found :\",e)\n",
+    "else:\n",
+    "    print(\"the code is good no issue is there\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "07e09811-ea68-4864-b93f-755e18031edc",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "this is the actual code\n",
+      "the code is good no issue is there\n",
+      "that all to say the end\n"
+     ]
+    }
+   ],
+   "source": [
+    "try:\n",
+    "    with open (\"notebook.txt\",\"r\") as file:\n",
+    "        new = file.read()\n",
+    "        print(new)\n",
+    "except Exception as e:\n",
+    "    print(\"the error is because of file not found :\",e)\n",
+    "else:\n",
+    "    print(\"the code is good no issue is there\")\n",
+    "finally:\n",
+    "    file.close()\n",
+    "    print(\"that all to say the end\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "4c7aa975-744c-4d92-a17b-0f1591f6933b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class IntegerNotAllowed(Exception):\n",
+    "    pass\n",
+    "\n",
+    "def no_int(x):\n",
+    "    if isinstance(x, int): \n",
+    "        raise IntegerNotAllowed(f\"The value '{x}' is not acceptable.\")\n",
+    "    else:\n",
+    "        print(\"Input is valid.\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e1fcb038-cedf-4cbc-9e8e-8e06aa5dadb1",
+   "metadata": {},
+   "source": [
+    "Q5. What are Custom Exceptions in python? Why do we need Custom Exceptions? Explain with an example.\n",
+    "\n",
+    "In python we had inbuild exceptions like divison by Zero,ValueError etc but when we create our code and try som excption we might be requiring our own exception that suits our usability."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "id": "578896bd-b196-4b19-a7c8-c7fe503fd6cb",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class Name_Error(Exception):\n",
+    "    pass\n",
+    "\n",
+    "def peru(x):\n",
+    "    if isinstance(x,str):\n",
+    "        raise Name_Error(f\"the {x} is not acceptable name \")\n",
+    "    else:\n",
+    "        print(\"its okay then\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1297e732-46ff-449e-b90b-00d32c1695c4",
+   "metadata": {},
+   "source": [
+    "Q6. Create a custom exception class. Use this class to handle an exception."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "id": "3f793a09-927e-4bf6-8629-9e3a618562d8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "##The above code can be used for explination\n",
+    "class Name_Error(Exception):\n",
+    "    pass\n",
+    "\n",
+    "def peru(x):\n",
+    "    if isinstance(x,str):\n",
+    "        raise Name_Error(f\"the {x} is not acceptable name \")\n",
+    "    else:\n",
+    "        print(\"its okay then\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "1f8557b5-eb41-4a34-82f8-5471e1b7d591",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
