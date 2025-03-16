@@ -1,0 +1,283 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "6bce8abe-a8bb-485d-b0e6-1b5e302e8f19",
+   "metadata": {},
+   "source": [
+    "Q1. What is the difference between Ordinal Encoding and Label Encoding? Provide an example of when you\n",
+    "might choose one over the other."
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "462450b4-3051-4b56-8773-25d73ccd60eb",
+   "metadata": {},
+   "source": [
+    "if we take the example suppose there  are rating a cricket player’s performance as \"Poor\", \"Average\", or \"Excellent\". Clearly, these ratings have an order—\"Poor\" is worse than \"Average\", and \"Excellent\" is the best.\" Now, to make this understandable for a machine learning model, we convert these words into numbers like this:\n",
+    "\n",
+    "\"Poor\" → 1\n",
+    "\"Average\" → 2\n",
+    "\"Excellent\" → 3\n",
+    "Since there is a logical ranking, this is called Ordinal Encoding. The numbers here don’t just represent different categories; they also indicate which one is better or worse than the other.\n",
+    "\n",
+    "Lable coding is about\n",
+    "Now, let’s say we have a dataset of cricket teams: \"India\", \"Australia\", and \"England\". Unlike performance ratings, these team names do not have any order—India is not “greater” than Australia, nor is Australia “less than” England.\n",
+    "\n",
+    "If we apply Label Encoding, we assign them random numbers like:\n",
+    "\n",
+    "\"India\" → 0\n",
+    "\"Australia\" → 1\n",
+    "\"England\" → 2\n",
+    "These numbers are just labels and do not mean that one team is superior to the other."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "de90b232-7c03-46ae-aa15-35cf4e030d0a",
+   "metadata": {},
+   "source": [
+    "Q2. Explain how Target Guided Ordinal Encoding works and provide an example of when you might use it in\n",
+    "a machine learning project."
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "7d44084b-5724-4f1e-a0e3-2e05f8c85a5e",
+   "metadata": {},
+   "source": [
+    "Target Guided Ordinal Encoding is a technique used to encode categorical variables based on the relationship between each category and the target variable. Instead of assigning arbitrary numerical values, this method orders categories based on the mean of the target variable (for regression) or probability of a class (for classification).\n",
+    "\n",
+    "How it Works:\n",
+    "Calculate the mean target value for each category.\n",
+    "Sort categories based on this mean.\n",
+    "Assign numerical labels in increasing order.\n",
+    "Example Use Case:\n",
+    "Suppose you are predicting house prices and have a categorical feature, \"Neighborhood.\" Instead of one-hot encoding, you calculate the mean house price for each neighborhood, sort them, and assign ordinal values accordingly. This helps retain the target relationship, improving model performance.\n",
+    "\n",
+    "Target Guided Ordinal Encoding is particularly useful for tree-based models like Decision Trees and Random Forests, as it preserves meaningful ordinal relationships.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e287ca98-7d9a-404f-ba64-81ca822eb648",
+   "metadata": {},
+   "source": [
+    "Q3. Define covariance and explain why it is important in statistical analysis. How is covariance calculated?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9585627a-3675-496b-aace-9f53e8649019",
+   "metadata": {},
+   "source": [
+    "Covariance measures the relationship between two variables, indicating how they change together. If two variables increase or decrease together, they have positive covariance. If one increases while the other decreases, they have negative covariance. If they are unrelated, the covariance is close to zero.\n",
+    "\n",
+    "Importance in Statistical Analysis\n",
+    "Covariance helps understand the direction of the relationship between variables. It is widely used in finance, economics, and data science. For example, in stock market analysis, a positive covariance between two stocks means they tend to move in the same direction, while a negative covariance indicates they move oppositely.\n",
+    "\n",
+    "How Covariance is Calculated\n",
+    "It is calculated by analyzing the differences between each data point and the average (mean) of each variable. These differences are multiplied and averaged over the dataset to determine how the variables interact. However, covariance does not indicate the strength of the relationship, which is where correlation is used."
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "8560678c-000c-473e-9645-d79637fdf2a9",
+   "metadata": {},
+   "source": [
+    "Q4. For a dataset with the following categorical variables: Color (red, green, blue), Size (small, medium,\n",
+    "large), and Material (wood, metal, plastic), perform label encoding using Python's scikit-learn library.\n",
+    "Show your code and explain the output."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "0ae00deb-b4ff-477a-9fcd-cd86efe19345",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   Color  Size  Material\n",
+      "0      2     2         2\n",
+      "1      1     1         0\n",
+      "2      0     0         1\n",
+      "3      1     2         2\n",
+      "4      2     0         0\n",
+      "5      0     1         1\n"
+     ]
+    }
+   ],
+   "source": [
+    "from  sklearn.preprocessing import LabelEncoder\n",
+    "import pandas as pd\n",
+    "\n",
+    "data = {\n",
+    "    'Color': ['red', 'green', 'blue', 'green', 'red', 'blue'],\n",
+    "    'Size': ['small', 'medium', 'large', 'small', 'large', 'medium'],\n",
+    "    'Material': ['wood', 'metal', 'plastic', 'wood', 'metal', 'plastic']\n",
+    "}\n",
+    "\n",
+    "df = pd.DataFrame(data)\n",
+    "le = LabelEncoder()\n",
+    "\n",
+    "for column in df.columns:\n",
+    "    df[column]= le.fit_transform(df[column])\n",
+    "\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "371f7c2c-345b-47e0-940a-457dd3b450c6",
+   "metadata": {},
+   "source": [
+    "Q5. Calculate the covariance matrix for the following variables in a dataset: Age, Income, and Education\n",
+    "level. Interpret the results."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "a3d9aa28-5831-4b38-9169-64ddb081777d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Covariance Matrix:\n",
+      "                    Age  Income  Education_Level\n",
+      "Age               62.5   125.0             25.0\n",
+      "Income           125.0   250.0             50.0\n",
+      "Education_Level   25.0    50.0             10.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "import pandas as pd\n",
+    "\n",
+    "# Dataset\n",
+    "data = {\n",
+    "    \"Age\": [25, 30, 35, 40, 45],\n",
+    "    \"Income\": [35, 45, 55, 65, 75],  # In thousands\n",
+    "    \"Education_Level\": [12, 14, 16, 18, 20]  # In years\n",
+    "}\n",
+    "\n",
+    "df = pd.DataFrame(data)\n",
+    "cov_matrix = df.cov()\n",
+    "\n",
+    "print(\"Covariance Matrix:\\n\", cov_matrix)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0e3e3f79-6530-4742-8a86-ed5b2b9836fd",
+   "metadata": {},
+   "source": [
+    "Q6. You are working on a machine learning project with a dataset containing several categorical\n",
+    "variables, including \"Gender\" (Male/Female), \"Education Level\" (High School/Bachelor's/Master's/PhD),\n",
+    "and \"Employment Status\" (Unemployed/Part-Time/Full-Time). Which encoding method would you use for\n",
+    "each variable, and why?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "3f324501-6fd0-4552-a0dd-a4e0002618a1",
+   "metadata": {},
+   "source": [
+    "For \"Gender\", binary encoding (0 for Male, 1 for Female) is ideal since it has only two categories.\n",
+    "\n",
+    "For \"Education Level\", ordinal encoding (e.g., High School = 1, Bachelor's = 2, Master's = 3, PhD = 4) is suitable because education levels follow a natural order.\n",
+    "\n",
+    "For \"Employment Status\", one-hot encoding is best since the categories (Unemployed, Part-Time, Full-Time) are nominal with no inherent ranking. One-hot encoding avoids misleading numerical relationships and prevents incorrect assumptions about hierarchical order."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ed26b72c-c93d-4c84-8c58-93997784e3a6",
+   "metadata": {},
+   "source": [
+    "Q7. You are analyzing a dataset with two continuous variables, \"Temperature\" and \"Humidity\", and two\n",
+    "categorical variables, \"Weather Condition\" (Sunny/Cloudy/Rainy) and \"Wind Direction\" (North/South/\n",
+    "East/West). Calculate the covariance between each pair of variables and interpret the results."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "e6158e8e-9708-4857-94ec-4e963255ba0a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "                   Temperature   Humidity  Weather Condition  Wind Direction\n",
+      "Temperature           9.166667  16.833333           0.166667       -2.277778\n",
+      "Humidity             16.833333  48.277778           1.944444       -4.944444\n",
+      "Weather Condition     0.166667   1.944444           0.766667        0.144444\n",
+      "Wind Direction       -2.277778  -4.944444           0.144444        1.344444\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "\n",
+    "# Sample dataset\n",
+    "data = {\n",
+    "    \"Temperature\": [30, 32, 28, 25, 31, 27, 29, 26, 33, 24],\n",
+    "    \"Humidity\": [60, 65, 58, 55, 70, 68, 62, 59, 75, 53],\n",
+    "    \"Weather Condition\": [\"Sunny\", \"Cloudy\", \"Rainy\", \"Sunny\", \"Cloudy\", \"Rainy\", \"Sunny\", \"Rainy\", \"Cloudy\", \"Sunny\"],\n",
+    "    \"Wind Direction\": [\"North\", \"South\", \"East\", \"West\", \"North\", \"South\", \"East\", \"West\", \"North\", \"South\"]\n",
+    "}\n",
+    "\n",
+    "# Convert categorical variables to numerical labels\n",
+    "weather_mapping = {\"Sunny\": 1, \"Cloudy\": 2, \"Rainy\": 3}\n",
+    "wind_mapping = {\"North\": 1, \"South\": 2, \"East\": 3, \"West\": 4}\n",
+    "\n",
+    "df = pd.DataFrame(data)\n",
+    "df[\"Weather Condition\"] = df[\"Weather Condition\"].map(weather_mapping)\n",
+    "df[\"Wind Direction\"] = df[\"Wind Direction\"].map(wind_mapping)\n",
+    "\n",
+    "# Compute covariance matrix\n",
+    "cov_matrix = df.cov()\n",
+    "\n",
+    "print(cov_matrix)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f33deea6-e59f-4449-b292-f45893b25c22",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python [conda env:base] *",
+   "language": "python",
+   "name": "conda-base-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
