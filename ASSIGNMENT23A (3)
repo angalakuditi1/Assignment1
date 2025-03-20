@@ -1,0 +1,209 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "e0bde909-6413-4745-9b1d-946a8895b42f",
+   "metadata": {},
+   "source": [
+    "Q1. Explain the difference between simple linear regression and multiple linear regression. Provide an\n",
+    "example of each."
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "92d840f4-f5fe-4175-9c0d-c72d3cd8fff9",
+   "metadata": {},
+   "source": [
+    "\n",
+    "Simple Linear Regression (SLR) and Multiple Linear Regression (MLR) are both used for predicting outcomes, but they differ in the number of factors considered.\n",
+    "\n",
+    "Simple Linear Regression examines the relationship between one independent variable and one dependent variable. It assumes a direct influence of a single factor on the outcome.\n",
+    "Example: Predicting a student’s exam score based on study hours. More hours generally lead to a higher score.\n",
+    "\n",
+    "Multiple Linear Regression considers multiple independent variables that together influence the dependent variable. It provides a more accurate prediction by analyzing several contributing factors.\n",
+    "Example: Predicting house prices based on area, number of rooms, and location. A larger house in a prime area with more rooms is likely to be more expensive.\n",
+    "\n",
+    "In short, SLR studies one factor at a time, while MLR evaluates multiple factors to improve prediction accuracy."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "166ad175-08a7-4eaa-8ec7-82788e644229",
+   "metadata": {},
+   "source": [
+    "Q2. Discuss the assumptions of linear regression. How can you check whether these assumptions hold in\n",
+    "a given dataset?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "b2bfc114-e170-47ec-9de1-2d441e77c8b5",
+   "metadata": {},
+   "source": [
+    "Linear regression has five key assumptions:\n",
+    "\n",
+    "Linearity – The relationship between independent (X) and dependent (Y) variables should be a straight line. Check with a scatter plot.\n",
+    "Independence – Errors should not follow a pattern. Check residuals over time.\n",
+    "Homoscedasticity – Errors should have constant spread.\n",
+    "Normality of Residuals – Errors should follow a bell curve. Check with a histogram or Q-Q plot.\n",
+    "No Multicollinearity – Independent variables shouldn’t be too similar. Check using a correlation matrix or VIF.\n",
+    "If assumptions fail, transform data or try alternative models."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "24719655-ba12-4956-ae3f-11274cc7f814",
+   "metadata": {},
+   "source": [
+    "Q3. How do you interpret the slope and intercept in a linear regression model? Provide an example using\n",
+    "a real-world scenario."
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "861e57b4-3e6d-47f0-a0af-bdd719da5a8f",
+   "metadata": {},
+   "source": [
+    "In a linear regression model, the slope tells us how much the dependent variable (Y) changes for every one-unit increase in the independent variable (X). The intercept is the predicted value of Y when X is zero.\n",
+    "\n",
+    "Example: Suppose a company finds that Salary = 3000 + 500 × (Years of Experience).\n",
+    "\n",
+    "Slope (500): For every additional year of experience, salary increases by ₹500.\n",
+    "Intercept (3000): Even with zero experience, the starting salary is ₹3000.\n",
+    "This helps businesses, economists, and analysts make predictions based on trends in data."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c5ddbe61-c9ea-4d3f-a9f7-9797a07a366e",
+   "metadata": {},
+   "source": [
+    "Q4. Explain the concept of gradient descent. How is it used in machine learning?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "0562ed1d-fa9b-45ab-8269-d67637e1aa9f",
+   "metadata": {},
+   "source": [
+    "Gradient Descent is an optimization algorithm used in machine learning to find the best values for a model’s parameters. Imagine you are on a hill in the dark and want to reach the lowest point (optimal solution). You take small steps in the direction where the slope decreases the most. Similarly, gradient descent adjusts model parameters step by step to minimize errors. The size of each step is controlled by the learning rate. If steps are too big, you might miss the lowest point; if too small, learning is slow. It helps models learn patterns and make better predictions."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "256e7cba-24b0-4a88-8dc4-ed1cd5aa16c6",
+   "metadata": {},
+   "source": [
+    "Q5. Describe the multiple linear regression model. How does it differ from simple linear regression?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "f18df3c8-d693-41ec-bc29-d963b582886c",
+   "metadata": {},
+   "source": [
+    "Multiple Linear Regression (MLR) is an advanced version of Simple Linear Regression (SLR) used to predict a dependent variable based on multiple independent variables. Unlike SLR, which considers only one factor affecting the outcome, MLR analyzes the combined impact of multiple factors. For example, predicting house prices based on size, location, and age instead of just size alone. MLR captures complex relationships but requires more data and careful handling to avoid issues like multicollinearity. It is widely used in business, finance, and science to understand how multiple variables influence an outcome, making predictions more accurate than SLR."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "92c53772-5335-43ca-98ae-b57fb3ba205e",
+   "metadata": {},
+   "source": [
+    "Q6. Explain the concept of multicollinearity in multiple linear regression. How can you detect and\n",
+    "address this issue?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "c1b88978-fa0a-42ab-b536-b09f96c8e3e8",
+   "metadata": {},
+   "source": [
+    "Multicollinearity occurs in multiple linear regression when independent variables are highly related, making it hard to determine their individual impact on the dependent variable.\n",
+    "\n",
+    "Real-Life Example:\n",
+    "Imagine predicting a cricketer’s performance using batting average and total runs scored. Since total runs depend on the batting average, both variables are strongly correlated. The model struggles to decide which one truly affects performance, leading to unreliable predictions.\n",
+    "\n",
+    "Solution:\n",
+    "Check correlation or use VIF (Variance Inflation Factor).\n",
+    "Remove one redundant variable.\n",
+    "Use Ridge Regression to reduce the effect of collinear variables.\n",
+    "Multicollinearity mostly affects interpretation, not prediction accuracy."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7045051d-4138-4f09-930a-31b1aa04413b",
+   "metadata": {},
+   "source": [
+    "Q7. Describe the polynomial regression model. How is it different from linear regression?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "84afa67a-faf7-4624-8059-fa0029917ad9",
+   "metadata": {},
+   "source": [
+    "Polynomial regression is an extension of linear regression that fits a curved line instead of a straight one. In simple terms, while linear regression predicts outcomes using a straight-line relationship (y = mx + c), polynomial regression introduces powers of the input variable (y = ax² + bx + c) to capture complex patterns. It’s useful when data points form curves rather than a straight trend. The key difference is that linear regression assumes a constant rate of change, whereas polynomial regression models varying rates of change, making it better for capturing nonlinear relationships in data."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6a668bdb-5c96-4275-9035-96454b28162b",
+   "metadata": {},
+   "source": [
+    "Q8. What are the advantages and disadvantages of polynomial regression compared to linear\n",
+    "regression? In what situations would you prefer to use polynomial regression?"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "id": "739e797f-6a77-4ae5-ad96-ae203191c8d5",
+   "metadata": {},
+   "source": [
+    "Advantages & Disadvantages of Polynomial Regression vs. Linear Regression\n",
+    "Advantages:\n",
+    "\n",
+    "Captures curved relationships better than linear regression, making it useful when data follows a non-linear trend.\n",
+    "Provides better accuracy for such data compared to a straight-line model.\n",
+    "More flexible than linear regression as it can fit complex patterns.\n",
+    "Disadvantages:\n",
+    "\n",
+    "Higher-degree polynomials can overfit the data, meaning the model may work well on training data but poorly on new data.\n",
+    "More computationally expensive and complex.\n",
+    "Choosing the right polynomial degree is tricky; too high can make the model unstable.\n",
+    "When to Use Polynomial Regression?\n",
+    "Use it when the relationship between variables is curved, such as predicting house prices based on size or growth trends in business. If data shows a clear upward/downward curve, polynomial regression is better than a straight-line (linear) model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "41510387-0892-4546-8acf-083bcc7b30fd",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python [conda env:base] *",
+   "language": "python",
+   "name": "conda-base-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
